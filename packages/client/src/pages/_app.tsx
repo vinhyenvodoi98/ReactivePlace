@@ -2,7 +2,6 @@ import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { AppProps } from 'next/app';
 import { ToastContainer } from 'react-toastify';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { sepolia } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 import '@/styles/globals.css';
@@ -10,13 +9,10 @@ import '@rainbow-me/rainbowkit/styles.css';
 import 'react-toastify/ReactToastify.min.css';
 
 import { useIsSsr } from '../utils/ssr';
+import { kopli, sepolia } from '@/config/customChain';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    sepolia,
-    // baseGoerli,
-    // ...(process.env.REACT_APP_ENABLE_TESTNETS === 'true' ? [goerli] : []),
-  ],
+  [sepolia, kopli],
   [publicProvider()]
 );
 

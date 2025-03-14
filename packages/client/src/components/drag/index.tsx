@@ -1,4 +1,3 @@
-import { ISuccessResult } from '@worldcoin/idkit';
 import { zoraNftCreatorV1Config } from '@zoralabs/zora-721-contracts';
 import { BigNumber } from 'ethers';
 import { toPng } from 'html-to-image';
@@ -14,7 +13,6 @@ import {
 } from 'wagmi';
 import { useAccount } from 'wagmi';
 
-import { decode } from '@/lib/wld';
 
 import { saveToIPFS } from '@/utils/saveToIPFS';
 
@@ -48,7 +46,6 @@ const DraggableBox = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState(1);
   const [placed, setPlaced] = useState(false);
-  const [proof, setProof] = useState<ISuccessResult | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('#FF0000');
   const [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
     x: 0,
@@ -355,14 +352,11 @@ const DraggableBox = () => {
 
   return (
     <div>
-      {proof && (
-        <div>
+
+        {/* <div>
           <div className='z-50 flex items-center justify-center h-36 gap-4'>
             <CustomButton open={onGenerateNFT}>
               <span className='relative flex'>Take snapshot</span>
-            </CustomButton>
-            <CustomButton open={() => writeZora?.()}>
-              <span className='relative flex'>Mint canvas</span>
             </CustomButton>
           </div>
           <div className='flex items-center justify-center h-12'>
@@ -372,8 +366,8 @@ const DraggableBox = () => {
               </Link>
             )}
           </div>
-        </div>
-      )}
+        </div> */}
+
       <div
         className='relative'
         style={{
