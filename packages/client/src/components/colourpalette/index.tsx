@@ -2,8 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useContractRead } from 'wagmi';
 
 import CountdownTimer from '../countdown';
-// import superPlaceAbi from '../../../../contract/artifacts/contracts/SuperPlace.sol/SuperPlace.json';
-// import superPlaceAddress from '../../../../contract/contract-address.json';
+import reactivePlaceContract from '../../../../reactive-contract/contract.json';
 
 type ColorOptions = {
   red: string;
@@ -35,22 +34,22 @@ const ColorPalette = ({
   setPlaced,
 }: Props) => {
   const [remainingTime, setRemainingTime] = useState<number>(0);
-  // const { data: currentRound, refetch } = useContractRead({
-  //   address: superPlaceAddress.address as `0x${string}`,
-  //   abi: superPlaceAbi.abi,
-  //   functionName: 'currentRound',
-  //   chainId: 420, // only call from op-goerli
-  //   cacheTime: 10_000,
-  //   staleTime: 10_000,
-  // });
+  const { data: currentRound, refetch } = useContractRead({
+    address: reactivePlaceContract.ReactivePlaceCallback.address as `0x${string}`,
+    abi: reactivePlaceContract.ReactivePlaceCallback.abi,
+    functionName: 'currentRound',
+    chainId: 5318008,
+    cacheTime: 10_000,
+    staleTime: 10_000,
+  });
 
   useEffect(() => {
     // Call fetchData immediately when the component renders
-    // refetch?.();
+    refetch?.();
 
     // Set up an interval to call fetchData every 10 seconds
     const interval = setInterval(() => {
-      // refetch?.();
+      refetch?.();
     }, 20000); // 20000 milliseconds = 20 seconds
 
     // Cleanup khi component unmount
@@ -62,10 +61,10 @@ const ColorPalette = ({
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentTime = Math.floor(Date.now() / 1000);
-      // setRemainingTime(Number(currentRound?.toString()) + 180 - currentTime);
-      // if (Number(currentRound?.toString()) + 180 - currentTime === 0) {
-      //   setPlaced(false);
-      // }
+      setRemainingTime(Number(currentRound?.toString()) + 180 - currentTime);
+      if (Number(currentRound?.toString()) + 180 - currentTime === 0) {
+        setPlaced(false);
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);

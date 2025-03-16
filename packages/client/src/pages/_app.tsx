@@ -12,7 +12,7 @@ import { useIsSsr } from '../utils/ssr';
 import { kopli, sepolia } from '@/config/customChain';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [sepolia, kopli],
+  [kopli, sepolia],
   [publicProvider()]
 );
 

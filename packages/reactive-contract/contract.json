@@ -1,0 +1,95 @@
+{
+  "ReactivePlaceL1Contract": {
+    "address": "0xa29C53f16568f270507Aa69A904D161af2A33eee",
+    "abi": [
+      {
+        "inputs": [{
+          "name": "_place",
+          "type": "tuple",
+          "internalType": "struct PlaceStruct",
+          "components": [
+            {
+              "name": "x",
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            {
+              "name": "y",
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "internalType": "string"
+            }
+          ]
+        }],
+        "name": "sendPlace",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      }
+    ]
+  },
+  "ReactivePlaceCallback": {
+    "address": "0xf4089c897f93060F3004B7160f798E9Fd0eE916b",
+    "abi": [
+      {
+        "type": "function",
+        "name": "place",
+        "inputs": [{
+          "name": "_place",
+          "type": "tuple",
+          "internalType": "struct PlaceStruct",
+          "components": [
+            {
+              "name": "x",
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            {
+              "name": "y",
+              "type": "uint8",
+              "internalType": "uint8"
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "internalType": "string"
+            }
+          ]
+        }],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+      },
+      {
+        "type": "function",
+        "name": "getCanvas",
+        "inputs": [{
+          "name": "x",
+          "type": "uint8",
+          "internalType": "uint8"
+        }],
+        "outputs": [{
+          "name": "",
+          "type": "string[200]",
+          "internalType": "string[200]"
+        }],
+        "stateMutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "currentRound",
+        "inputs": [],
+        "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+        "stateMutability": "view"
+      }
+    ]
+  },
+  "ReactivePlaceReactiveContract": {
+    "address": "0xE32343749686f759AB771A8098672327c2837902",
+    "abi": [
+    ]
+  }
+}
